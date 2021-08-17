@@ -21,15 +21,19 @@ function Products(name, fileExtension = 'jpg'){
 function selectRandomProduct(){
     return Math.floor(Math.random() * allProducts.length);
 }
-
+let productArray = [];
 function renderProducts(){
     // selectRandomProduct();
-    let product1 = selectRandomProduct();
-    let product2 = selectRandomProduct();
-    let product3 = selectRandomProduct();
-    while (product1 === product2){
-        product2 = selectRandomProduct();
+    while (productArray.length < 4){
+        let randomNumber = selectRandomProduct();
+        if (!productArray.includes(randomNumber)){
+            productArray.push(randomNumber);
+        }
     }
+    let product1 = productArray.shift();
+    let product2 = productArray.shift();
+    let product3 = productArray.shift();
+    
     image1.src = allProducts[product1].src;
     image2.src = allProducts[product2].src;
     image3.src = allProducts[product3].src;
