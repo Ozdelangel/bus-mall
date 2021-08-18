@@ -27,10 +27,6 @@
       color: #2e090c;
   }
   
-  ul li {
-      color: #2e090c;
-    line-height: 160%;
-  }
   
  
   
@@ -52,25 +48,10 @@
     border: 5px solid #2e090c;
     cursor: pointer;
   }
-  
- 
-  
-  section + div {
-    background-color: #2e090c;
-    color: lightgrey;
-    padding: .5rem 1rem;
-    width: max-content;
-    font-size: .8rem;
-    pointer-events: none;
-  }
-  
-  section + div.clicks-allowed {
-    background-color: #2e090c;
-    color: white;
-    cursor: pointer;
-    pointer-events: auto;
-  }
-  
-  section + div.clicks-allowed:hover {
-    background-color:#2e090c
+
+  canvas{
+    max-width: 500px;
+    max-height: 300px;
+    margin: auto;
+    color: #2e090c;
   }
