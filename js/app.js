@@ -1,6 +1,7 @@
 'use strict';
 
 let allProducts = [];
+// console.log(allProducts);
 let myContainer = document.querySelector('section');
 
 let image1 = document.querySelector('section img:first-child');
@@ -8,7 +9,7 @@ let image2 = document.querySelector('section img:nth-child(2)');
 let image3 = document.querySelector('section img:nth-child(3)');
 
 let clicks = 0;
-let clickAllowed = 25;
+let clickAllowed = 10;
 let numberOfDifferentStuff = 4;
 
 function Products(name, fileExtension = 'jpg'){
@@ -47,6 +48,7 @@ function renderProducts(){
 }
 
 function handleProductClick(event){
+    event.preventDefault();
     if (event.target === myContainer){
         alert('Please click on an image');
     }
@@ -128,6 +130,32 @@ let chartObject =  {
         }
     }
 }
+
+function storeAProduct(){
+    console.log(allProducts);
+    let stringifiedProducts = JSON.stringify(allProducts);
+    console.log(stringifiedProducts);
+    localStorage.setItem('products',stringifiedProducts);
+}
+
+function getProducts(){
+    let potentialThings = localStorage.getItem('products');
+    console.log(potentialThings);
+    if (potentialThings){
+        let parsedProducts = JSON.parse(potentialThings);
+        console.log(parsedProducts);
+        for (let products of parsedProducts){
+            let name = products.name;
+            let src =  products.src;
+            let views = products.views;
+            let clicks = products.clicks;
+            new Products(name, src, views,clicks);
+        }
+    }
+}
+// getProducts();
+storeAProduct();
+getProducts();
 let ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, chartObject);
 }
