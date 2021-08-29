@@ -9,7 +9,7 @@ let image2 = document.querySelector('section img:nth-child(2)');
 let image3 = document.querySelector('section img:nth-child(3)');
 
 let clicks = 0;
-let clickAllowed = 10;
+let clickAllowed = 25;
 let numberOfDifferentStuff = 4;
 // ---------- Constructor function ------------- //
 function Products(name, fileExtension = 'jpg'){
