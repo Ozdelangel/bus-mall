@@ -1,5 +1,5 @@
 'use strict';
-
+// ---------- Global variables ------------- //
 let allProducts = [];
 // console.log(allProducts);
 let myContainer = document.querySelector('section');
@@ -11,7 +11,7 @@ let image3 = document.querySelector('section img:nth-child(3)');
 let clicks = 0;
 let clickAllowed = 10;
 let numberOfDifferentStuff = 4;
-
+// ---------- Constructor function ------------- //
 function Products(name, fileExtension = 'jpg'){
     this.name = name;
     this.src = `img/${name}.${fileExtension}`;
@@ -19,10 +19,11 @@ function Products(name, fileExtension = 'jpg'){
     this.clicks = 0;
     allProducts.push(this);
 }
-
+// ---------- Global functions ------------- //
 function selectRandomProduct(){
     return Math.floor(Math.random() * allProducts.length);
 }
+
 let productArray = [];
 function renderProducts(){
     // selectRandomProduct();
@@ -46,7 +47,7 @@ function renderProducts(){
     allProducts[product2].views++;
     allProducts[product3].views++;
 }
-
+// ---------- Event Handler ------------- //
 function handleProductClick(event){
     event.preventDefault();
     if (event.target === myContainer){
@@ -137,7 +138,7 @@ function storeAProduct(){
     console.log(stringifiedProducts);
     localStorage.setItem('products',stringifiedProducts);
 }
-
+// reinstanciation
 function getProducts(){
     let potentialThings = localStorage.getItem('products');
     console.log(potentialThings);
@@ -159,4 +160,5 @@ getProducts();
 let ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, chartObject);
 }
+// ---------- Event listener ------------- //
 myContainer.addEventListener('click', handleProductClick);
